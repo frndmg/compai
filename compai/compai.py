@@ -64,6 +64,24 @@ def tuple_map(*fs):
     )
 
 
+def dict_map(**fs):
+    """Map especific elements in a dict.
+    >>> dict_map(a=int, b=str)(dict(a='1', b=123, c=True))
+    {'a': 1, 'b': '123', 'c': True}
+    """
+
+    def _change_dict(d):
+        d = d.copy()
+
+        for k, f in fs.items():
+            if k in d:
+                d[k] = f(d[k])
+
+        return d
+
+    return _change_dict
+
+
 def identity(x):
     return x
 
