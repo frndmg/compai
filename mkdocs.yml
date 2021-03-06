@@ -1,0 +1,13 @@
+site_name: Compai
+
+nav:
+- Index: index.md
+
+theme: material
+
+plugins:
+- search
+- mkdocstrings:
+    default_handler: python
+    watch:
+    - compai
